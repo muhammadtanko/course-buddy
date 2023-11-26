@@ -6,7 +6,7 @@ import { Grid } from '@mui/material'
 
 function DashboardLayout({children}) {
   return (
-    <Grid>
+    <Grid  >
     <Header/>
     <Sidebar/>
     {children}
