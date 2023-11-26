@@ -1,6 +1,6 @@
 "use client";
 
-import {signIn} from "next-auth/react";
+import { signIn } from "next-auth/react";
 import * as React from 'react';
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
@@ -16,19 +16,31 @@ import FacebookIcon from "./FacebookIcon";
 export default function LoginFinal() {
   return (
     <CssVarsProvider>
-      <main>
+      <main
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+          backgroundImage: `url("https://images.unsplash.com/photo-1483791424735-e9ad0209eea2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
+          backgroundSize: 'cover',
+          backdropFilter: 'blur(10px)',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)'
+        }}
+      >
         <Sheet
           sx={{
+            placeSelf: "center",
             width: 300,
-            mx: 'auto', // margin left & right
-            my: 4, // margin top & bottom
-            py: 3, // padding top & bottom
-            px: 2, // padding left & right
+            py: 3,
+            px: 2,
             display: 'flex',
+            textAlign: "center",
             flexDirection: 'column',
             gap: 2,
             borderRadius: 'sm',
             boxShadow: 'md',
+
           }}
           variant="outlined"
         >
@@ -39,24 +51,24 @@ export default function LoginFinal() {
             <Typography level="body-sm">Sign in to continue.</Typography>
           </div>
           <Button
-                variant="soft"
-                color="neutral"
-                fullWidth
-                startDecorator={<GoogleIcon />}
-                onClick={()=>signIn("google")}
-              >
-                Continue with Google
-              </Button>
-              <Button
-                variant="soft"
-                color="neutral"
-                fullWidth
-                startDecorator={<FacebookIcon />}
-                onClick={()=>signIn("facebook")}
+            variant="soft"
+            color="neutral"
+            fullWidth
+            startDecorator={<GoogleIcon />}
+            onClick={() => signIn("google")}
+          >
+            Continue with Google
+          </Button>
+          <Button
+            variant="soft"
+            color="neutral"
+            fullWidth
+            startDecorator={<FacebookIcon />}
+            onClick={() => signIn("facebook")}
 
-              >
-                Continue with Facebook
-              </Button>
+          >
+            Continue with Facebook
+          </Button>
           <Typography
             endDecorator={<Link href="/sign-up">Sign up</Link>}
             fontSize="sm"
