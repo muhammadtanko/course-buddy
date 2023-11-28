@@ -3,7 +3,7 @@ import SvgIcon from '@mui/joy/SvgIcon';
 
 export default function GoogleIcon() {
   return (
-    <SvgIcon fontSize="xl">
+    <SvgIcon fontSize="xl3">
       <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
         <path
           fill="#4285F4"

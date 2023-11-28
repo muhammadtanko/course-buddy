@@ -70,8 +70,6 @@ export default function Home() {
         }}
       >
         <HeroLeft01 />
-        {/* <StatBox/> */}
-        {/* <Footer/> */}
       </Box>
     </CssVarsProvider>
   );

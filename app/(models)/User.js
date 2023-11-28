@@ -7,8 +7,13 @@ mongoose.Promise = global.Promise;
 const userSchema = new Schema(
   {
     name: String,
-    email: String,
-    password: String,
+    email: { type: String, index: { unique: true } },
+    picture: String,
+    phone: { type: String, index: { unique: true } },
+    gender: { type: String, enum: ["male", "female"] },
+    isCompleted: { type: Boolean, default: false },
+    school: String,
+    course: String,
   },
   {
     timestamps: true,

@@ -31,13 +31,14 @@ export default function LoginFinal() {
         <Sheet
           sx={{
             placeSelf: "center",
-            width: 300,
-            py: 3,
-            px: 2,
+            width: 400,
+            height:300,
+            py: 5,
+            px: 5,
             display: 'flex',
             textAlign: "center",
             flexDirection: 'column',
-            gap: 2,
+            gap: 5,
             borderRadius: 'sm',
             boxShadow: 'md',
 
@@ -45,15 +46,15 @@ export default function LoginFinal() {
           variant="outlined"
         >
           <div>
-            <Typography level="h4" component="h1">
+            <Typography level="h2" component="h1">
               <b>Welcome!</b>
             </Typography>
-            <Typography level="body-sm">Sign in to continue.</Typography>
+            <Typography level="h4">Sign in to continue.</Typography>
           </div>
           <Button
             variant="soft"
             color="neutral"
-            fullWidth
+            sx={{height:50,fontSize:18}}
             startDecorator={<GoogleIcon />}
             onClick={() => signIn("google")}
           >
@@ -62,7 +63,7 @@ export default function LoginFinal() {
           <Button
             variant="soft"
             color="neutral"
-            fullWidth
+            sx={{height:50,fontSize:18}}
             startDecorator={<FacebookIcon />}
             onClick={() => signIn("facebook")}
 

@@ -1,36 +1,28 @@
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
+// import { MongoDBAdapter } from "@auth/mongodb-adapter"
+// import clientPromise from "../../../lib/mongo"
 import User from "/app/(models)/User";
 
 export const options = {
+  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     FacebookProvider({
       profile(profile) {
-        console.log("Profile GitHub: ", profile);
+        console.log("Profile FaceBook: ", profile);
 
-        let userRole = "GitHub User";
-        if (profile?.email == "jake@claritycoders.com") {
-          userRole = "admin";
-        }
-
-        return {
-          ...profile,
-          role: userRole,
-        };
+        return profile
       },
       clientId: "318698361046134",
       clientSecret: "4b31c05b8c44b18458e4a83c2f539487",
     }),
     GoogleProvider({
       profile(profile) {
-        // console.log("Profile Google: ", profile);
-
-        let userRole = "Google User";
         return {
           ...profile,
           id: profile.sub,
-          role: userRole,
         };
+
       },
       clientId: "1020201000495-pabs2b6gk4743a3sg89o8d65js9cqq3t.apps.googleusercontent.com",
       clientSecret: "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",
@@ -38,24 +30,24 @@ export const options = {
 
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      // let isUser = await User.findOne({ email: user.email })
-      // console.log({ isUser })
-      const isAllowedToSignIn = false
-      return true
-      if (isUser) {
+    async signIn({ user, account, profile, email, isNewUser }) {
+      let isUser = await User.findOne({ email: profile.email, isComplete: true })
+      // console.log({ user, account, profile, email, credentials })
+      if (!isUser) {
+        // return { user, account, profile, email, credentials }
+        return `/dashboard`
+
       } else {
-        // Return false to display a default error message
-        // return false
+        return `/setup?email=${profile.email}`
         // Or you can return a URL to redirect 
       }
     },
     async jwt({ token, user }) {
-      if (user) token.role = user.role;
+      // if (user) token.role = user.role;
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      // if (session?.user) session.user.role = token.role;
       return session;
     },
   },

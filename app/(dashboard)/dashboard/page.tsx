@@ -1,11 +1,10 @@
 import React from 'react'
-import DashboardLayout from './layout'
+import DashboardLayout from '../layout'
+import Layout from '../layout'
 
 function dashboard() {
     return (
-        <DashboardLayout>
             <h1>Hello world</h1>
-        </DashboardLayout>
     )
 }
 

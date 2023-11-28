@@ -283,6 +283,7 @@ export default function MyProfile() {
                   >
                     <FormLabel>School</FormLabel>
                     <Select
+                      
                       name='school'
                       value={formik.values.school?.name}
                       // onChange={(e, value) => formik.setFieldValue('school', value?.name || "")}
@@ -309,27 +310,6 @@ export default function MyProfile() {
                       </Typography>
                     )}
                   </FormControl >
-
-                  {/* <FormControl >
-                    <FormLabel>Department</FormLabel>
-                    <Autocomplete
-                      name='department'
-                      value={formik.values.department}
-                      onChange={(e, value) => formik.setFieldValue('department', value?.name || "")}
-                      onBlur={formik.handleBlur}
-                      placeholder="Department"
-                      getOptionLabel={(option)=>option.name}
-                      options={departments}
-                      renderInput={(params) => (
-                        <Input {...params} size="sm" />
-                      )}
-                    />
-                    {formik.touched.department && formik.errors.department && (
-                      <Typography color="danger" fontSize={12}>
-                        {formik.errors.department}
-                      </Typography>
-                    )}
-                  </FormControl> */}
                   <FormControl>
                     <FormLabel>Department</FormLabel>
                     <Autocomplete
